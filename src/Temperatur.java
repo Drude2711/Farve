@@ -60,16 +60,28 @@ public class Temperatur {
         return "[" + celsius() + "C, " + fahrenheit() + "F]";
     }
 
+    // src/Temperatur.TemperaturTest.java
     public static class TemperaturTest {
-        public static void main(String[] args) {
+
+        public static void main(String[] argv) {
             Temperatur t1 = new Temperatur();
-            Temperatur t2 = new Temperatur();
-            t1.celsius(20);
-            t2.fahrenheit(68);
-            System.out.println(t1);
-            System.out.println(t2);
-            System.out.println(t1.equals(t2));
-            System.out.println(t1.compareTo(t2));
+
+            // Set and display temperature in Celsius
+            t1.celsius(100);
+            System.out.println(t1); // Output: [100.0C, 212.0F]
+
+            // Set and display temperature in Fahrenheit
+            t1.fahrenheit(0);
+            System.out.println(t1); // Output: [-17.7778C, 0.0F]
+
+            // Copy constructor test
+            Temperatur t2 = new Temperatur(t1);
+            System.out.println("t1 og t2 ens: " + t1.equals(t2)); // Output: true
+
+            // Set new value to t1 and compare with t2
+            t1.celsius(0);
+            System.out.println(t1); // Output: [0.0C, 32.0F]
+            System.out.println("t1 compare to t2: " + t1.compareTo(t2)); // Output: -1
         }
     }
 }
